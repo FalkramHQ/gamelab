@@ -17,7 +17,7 @@ gamelab/
 ├── docs/
 │   └── specs/                         # one design spec per game (approved concepts)
 ├── games/
-│   └── taxon/                         # game #1 — competitive creature deduction
+│   └── spotted/                         # game #1 — competitive creature deduction
 │       ├── RULES.md                   #   decision-complete rulebook
 │       ├── cards/*.csv                #   printable card content (single source of truth)
 │       └── sim/                       #   rules engine, bots, experiments, REPORT.md
@@ -33,7 +33,7 @@ gamelab/
 2. **Content** — card lists as CSVs (`cards/creatures.csv` style) so the physical game
    and the simulator share one source of truth.
 3. **Simulate** — every game ships a Python sim kit: rules engine, a random bot, an
-   optimal/heuristic bot, and a strategy sweep (`games/taxon/sim/` is the reference).
+   optimal/heuristic bot, and a strategy sweep (`games/spotted/sim/` is the reference).
 4. **Balance gate** — a game ships only when its report passes: seat fairness ≤ 3%,
    skill beats randomness ≥ 85%, no degenerate strategy, game length inside the
    play-time envelope.
@@ -44,7 +44,7 @@ Read the full methodology: [.qoder/skills/tabletop-game-design/SKILL.md](.qoder/
 
 | Game | Players | Time | Pitch | Status |
 |---|---|---|---|---|
-| [TAXON](games/taxon/README.md) | 2–5 | ~25 min | Secret creatures, public interrogations — the sharpest decision tree wins | ✅ sim-balanced |
+| [SPOTTED!](games/spotted/README.md) | 2–5 | ~25 min | Secret creatures, public interrogations — the sharpest decision tree wins | ✅ sim-balanced |
 
 ## Quick commands
 
@@ -52,7 +52,7 @@ Read the full methodology: [.qoder/skills/tabletop-game-design/SKILL.md](.qoder/
 # scaffold a new game
 ./templates/new-game.sh my-game-name
 
-# TAXON test kit
-python3 -m unittest games.taxon.sim.test_taxon   # unit tests
-python3 -m games.taxon.sim.run                    # full balance suite → REPORT.md
+# SPOTTED! test kit
+python3 -m unittest games.spotted.sim.test_spotted   # unit tests
+python3 -m games.spotted.sim.run                    # full balance suite → REPORT.md
 ```

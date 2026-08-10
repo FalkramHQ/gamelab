@@ -1,4 +1,4 @@
-# TAXON
+# SPOTTED!
 
 **A competitive deduction card game for 2–5 players · ~25 minutes · ages 10+**
 
@@ -8,7 +8,7 @@ Ask too many questions and everyone learns the answer — including the rival yo
 hunting. The sharpest decision tree wins.
 
 > Design reference: built from the mechanism blocks of *Building Blocks of Tabletop
-> Game Design* — see `docs/specs/2026-08-10-taxon-design.md`.
+> Game Design* — see `docs/specs/2026-08-10-spotted-design.md`.
 
 ---
 

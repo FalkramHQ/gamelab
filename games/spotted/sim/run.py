@@ -1,8 +1,8 @@
-"""TAXON simulation: experiments + balance report.
+"""SPOTTED! simulation: experiments + balance report.
 
 Run from the workspace root:
 
-    python3 -m games.taxon.sim.run [--quick]
+    python3 -m games.spotted.sim.run [--quick]
 
 Experiments:
   1. Static question-balance analysis (per-question split & info gain)
@@ -20,7 +20,7 @@ from pathlib import Path
 
 from .agents import AlwaysGuessAgent, InfoGainAgent, NeverGuessAgent, RandomAgent
 from .engine import Game
-from .taxon_data import (
+from .data import (
     TRAITS,
     all_questions,
     load_creatures,
@@ -94,7 +94,7 @@ def main():
     K = 300 if args.quick else 2000
     Ks = 200 if args.quick else 1000
 
-    lines = ["# TAXON — Simulation & Balance Report", ""]
+    lines = ["# SPOTTED! — Simulation & Balance Report", ""]
     rng_seed = 42
     comp_profiles = load_compensation()
 

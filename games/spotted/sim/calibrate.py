@@ -1,11 +1,11 @@
-"""TAXON simulation: seat-compensation calibration.
+"""SPOTTED! simulation: seat-compensation calibration.
 
 Searches small starting-token offsets for later seats (ACT-14 style) so that
 symmetric mirror matches give every seat an equal chance to win.
 
 Run from the workspace root:
 
-    python3 -m games.taxon.sim.calibrate [--games 400]
+    python3 -m games.spotted.sim.calibrate [--games 400]
 
 Writes sim/calibration.json consumed by run.py and documented in RULES.md.
 """

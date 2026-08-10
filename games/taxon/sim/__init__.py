@@ -1,1 +1,0 @@
-"""TAXON simulation package."""

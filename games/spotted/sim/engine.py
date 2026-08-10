@@ -1,6 +1,6 @@
-"""TAXON simulation: full rules engine.
+"""SPOTTED! simulation: full rules engine.
 
-Implements the rulebook in games/taxon/RULES.md exactly:
+Implements the rulebook in games/spotted/RULES.md exactly:
 - draw 1, then one action (question / special / identification / discard)
 - public answers increment the target's q counter (efficiency penalty meter)
 - scoring: 2 + max(0, 4 - q) for a correct identification
@@ -11,7 +11,7 @@ from __future__ import annotations
 import random
 from dataclasses import dataclass, field
 
-from .taxon_data import (
+from .data import (
     Creature,
     QuestionCard,
     TRAITS,

@@ -1,4 +1,4 @@
-"""TAXON simulation: bot players.
+"""SPOTTED! simulation: bot players.
 
 - RandomAgent:      baseline noise; legal moves, no strategy.
 - InfoGainAgent:    decision-tree bot. Asks the question with maximal expected
@@ -12,7 +12,7 @@ from __future__ import annotations
 import random
 
 from .engine import Game
-from .taxon_data import (
+from .data import (
     TRAITS,
     all_questions,
     question_info_gain,

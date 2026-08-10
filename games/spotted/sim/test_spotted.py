@@ -1,8 +1,8 @@
-"""TAXON simulation: unit tests.
+"""SPOTTED! simulation: unit tests.
 
 Run from the workspace root:
 
-    python3 -m unittest games.taxon.sim.test_taxon -v
+    python3 -m unittest games.spotted.sim.test_spotted -v
 """
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ import unittest
 
 from .agents import AlwaysGuessAgent, InfoGainAgent, RandomAgent
 from .engine import Game, HAND_LIMIT, STARTING_HAND
-from .taxon_data import (
+from .data import (
     TRAITS,
     load_creatures,
     load_question_deck,

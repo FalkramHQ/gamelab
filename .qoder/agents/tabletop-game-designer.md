@@ -25,4 +25,4 @@ Working rules:
 - Keep designs lean: prefer cutting a mechanism over adding an exception rule.
 - All randomness seeded; all experiments reproducible via a single CLI entry point.
 
-Reference implementation: `games/taxon/` in this workspace.
+Reference implementation: `games/spotted/` in this workspace.

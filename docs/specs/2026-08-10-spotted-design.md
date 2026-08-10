@@ -1,4 +1,4 @@
-# TAXON — Design Spec
+# SPOTTED! — Design Spec
 
 **Date:** 2026-08-10
 **Status:** Approved
@@ -49,7 +49,7 @@ intuition as an emergent side effect of competitive play.
 
 ## 5. Simulation / testing kit
 
-Python package under `games/taxon/sim/`:
+Python package under `games/spotted/sim/`:
 - **Engine:** full rules implementation with deterministic seeds.
 - **Agents:** Random, InformationGain (decision-tree optimal questioning), ThresholdGuesser
   (guess when posterior ≥ θ), combined Optimal bot.
@@ -60,7 +60,7 @@ Python package under `games/taxon/sim/`:
 
 ## 6. Deliverables
 
-1. `docs/specs/2026-08-10-taxon-design.md` (this file)
+1. `docs/specs/2026-08-10-spotted-design.md` (this file)
 2. `.qoder/skills/tabletop-game-design/SKILL.md` + `.qoder/agents/tabletop-game-designer.md` — reusable skill
-3. `games/taxon/RULES.md`, `games/taxon/cards/*.csv` — complete printable game
-4. `games/taxon/sim/` — simulation kit, tests, balance report
+3. `games/spotted/RULES.md`, `games/spotted/cards/*.csv` — complete printable game
+4. `games/spotted/sim/` — simulation kit, tests, balance report

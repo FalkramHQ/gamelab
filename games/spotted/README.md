@@ -1,4 +1,4 @@
-# TAXON
+# SPOTTED!
 
 A competitive deduction card game for **2–5 players, ~25 minutes**. Secret creatures,
 public interrogations, and a score system that rewards the sharpest decision tree.

@@ -112,5 +112,5 @@ auditable.
 
 This workspace is a reusable game lab. New games are scaffolded with
 `templates/new-game.sh <name>` (creates `games/<name>/` + a dated spec in
-`docs/specs/`). See `games/taxon/`: a deduction card game built end-to-end with this
+`docs/specs/`). See `games/spotted/`: a deduction card game built end-to-end with this
 skill (spec, card CSVs, rules, simulation kit, balance report).

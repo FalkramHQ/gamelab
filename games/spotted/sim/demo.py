@@ -1,8 +1,8 @@
-"""TAXON demo: narrate a real simulated game turn by turn.
+"""SPOTTED! demo: narrate a real simulated game turn by turn.
 
 Run from the workspace root:
 
-    python3 -m games.taxon.sim.demo [seed] [players]
+    python3 -m games.spotted.sim.demo [seed] [players]
 
 Prints Round 1 in full detail (every question, answer, and deduction), then
 fast-forwards to the final result, highlighting every Identification.

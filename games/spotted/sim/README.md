@@ -1,32 +1,32 @@
-# TAXON — Simulation & Testing Kit
+# SPOTTED! — Simulation & Testing Kit
 
-Deterministic rules engine + bot players + balance experiments for the TAXON card
+Deterministic rules engine + bot players + balance experiments for the SPOTTED! card
 game. Pure Python 3, zero dependencies.
 
 ## Quick start (run from the workspace root)
 
 ```bash
 # unit tests (13 tests: data, rules, scoring, determinism, termination)
-python3 -m unittest games.taxon.sim.test_taxon -v
+python3 -m unittest games.spotted.sim.test_spotted -v
 
 # full balance suite: ~23k games, writes REPORT.md (~45s)
-python3 -m games.taxon.sim.run
+python3 -m games.spotted.sim.run
 
 # fast smoke run (~7s)
-python3 -m games.taxon.sim.run --quick
+python3 -m games.spotted.sim.run --quick
 
 # seat-compensation calibration search (only needed if rules change)
-python3 -m games.taxon.sim.calibrate --games 500
+python3 -m games.spotted.sim.calibrate --games 500
 
 # narrate a real game turn by turn (Round 1 in detail)
-python3 -m games.taxon.sim.demo [seed] [players]
+python3 -m games.spotted.sim.demo [seed] [players]
 ```
 
 ## Layout
 
 | File | Role |
 |---|---|
-| `taxon_data.py` | Loads card content from `../cards/*.csv` (single source of truth); entropy / information-gain math |
+| `data.py` | Loads card content from `../cards/*.csv` (single source of truth); entropy / information-gain math |
 | `engine.py` | Full rules implementation: draws, hand limit, questions, specials, identification, scoring, equal-turn finish, first-player rotation |
 | `agents.py` | `RandomAgent` (baseline), `InfoGainAgent` (decision-tree optimal questioning + threshold guessing), `AlwaysGuessAgent` / `NeverGuessAgent` (degenerate probes) |
 | `run.py` | Experiments + auto-generated `REPORT.md` with PASS/FAIL verdict |

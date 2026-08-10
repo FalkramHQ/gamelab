@@ -1,4 +1,4 @@
-# TAXON — Simulation & Balance Report
+# SPOTTED! — Simulation & Balance Report
 
 ## 1. Question balance (static, full 25-creature deck)
 

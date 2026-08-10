@@ -1,4 +1,4 @@
-"""TAXON simulation: card data loading and shared helpers.
+"""SPOTTED! simulation: card data loading and shared helpers.
 
 Source of truth for card content is the CSV files in ../cards so the physical
 game and the simulator can never drift apart.

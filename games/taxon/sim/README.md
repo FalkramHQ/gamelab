@@ -17,6 +17,9 @@ python3 -m games.taxon.sim.run --quick
 
 # seat-compensation calibration search (only needed if rules change)
 python3 -m games.taxon.sim.calibrate --games 500
+
+# narrate a real game turn by turn (Round 1 in detail)
+python3 -m games.taxon.sim.demo [seed] [players]
 ```
 
 ## Layout

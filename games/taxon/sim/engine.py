@@ -79,7 +79,7 @@ class Game:
         #   ("answer", target, epoch, trait, value, yes, private_to)
         #   ("reveal", target, epoch, trait, value, private_to)
         #   ("guess_fail", target, epoch, cid)
-        #   ("identified", target, epoch, cid)
+        #   ("identified", target, epoch, cid, q_at_guess)
         self.log: list[tuple] = []
         self.depleted = False
         self.finish_triggered = False  # someone reached WIN_TARGET; finish the round
@@ -180,7 +180,7 @@ class Game:
                 points = 2 + max(0, 4 - t.q)
                 p.score += points
                 p.correct_ids += 1
-                self.log.append(("identified", target, t.epoch, cid))
+                self.log.append(("identified", target, t.epoch, cid, t.q))
                 if self.creature_deck:
                     t.specimen = self.creature_deck.pop()
                     t.epoch += 1
@@ -203,11 +203,12 @@ class Game:
         if private_to is None:
             t.q += 1
 
-    def play(self) -> GameResult:
+    def play(self, on_turn=None) -> GameResult:
         while not self.over and self.turns < MAX_TURNS:
             self.turn_seat = self.order[self.pos]
             p = self.players[self.turn_seat]
             self._draw(p)
+            log_before = len(self.log)
             actions = self.agents[self.turn_seat].play(self, self.turn_seat)
             resolved_main = False
             for act in actions:
@@ -218,6 +219,8 @@ class Game:
                     resolved_main = True
             if not resolved_main and p.hand:  # forced discard if agent idled
                 self.question_discard.append(p.hand.pop(0))
+            if on_turn:
+                on_turn(self, p.seat, actions, self.log[log_before:])
 
             if p.score >= self.win_target:
                 self.finish_triggered = True  # equal-turn finish: complete the round

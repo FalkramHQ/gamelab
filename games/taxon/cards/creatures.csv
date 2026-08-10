@@ -1,0 +1,26 @@
+id,name,class,habitat,size,diet,activity
+C01,Elephant,mammal,grassland,large,herbivore,diurnal
+C02,Bat,mammal,forest,small,carnivore,nocturnal
+C03,Dolphin,mammal,water,large,carnivore,diurnal
+C04,Mole,mammal,underground,small,carnivore,nocturnal
+C05,Red Fox,mammal,forest,small,omnivore,nocturnal
+C06,Owl,bird,forest,medium,carnivore,nocturnal
+C07,Penguin,bird,water,medium,carnivore,diurnal
+C08,Hummingbird,bird,grassland,small,herbivore,diurnal
+C09,Woodpecker,bird,forest,small,omnivore,diurnal
+C10,Vulture,bird,grassland,large,carnivore,diurnal
+C11,Cobra,reptile,desert,medium,carnivore,diurnal
+C12,Gecko,reptile,desert,small,carnivore,nocturnal
+C13,Tortoise,reptile,grassland,medium,herbivore,diurnal
+C14,Chameleon,reptile,forest,small,carnivore,diurnal
+C15,Sea Turtle,reptile,water,large,herbivore,diurnal
+C16,Honeybee,insect,grassland,small,herbivore,diurnal
+C17,Ant,insect,underground,small,omnivore,diurnal
+C18,Scorpion,insect,desert,small,carnivore,nocturnal
+C19,Firefly,insect,grassland,small,omnivore,nocturnal
+C20,Dung Beetle,insect,underground,small,omnivore,nocturnal
+C21,Shark,aquatic,water,large,carnivore,diurnal
+C22,Octopus,aquatic,water,medium,carnivore,nocturnal
+C23,Seahorse,aquatic,water,small,herbivore,diurnal
+C24,Prairie Dog,mammal,underground,small,herbivore,diurnal
+C25,Rattlesnake,reptile,desert,medium,carnivore,nocturnal

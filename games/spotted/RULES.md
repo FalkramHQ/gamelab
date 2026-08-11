@@ -1,11 +1,11 @@
 # SPOTTED!
 
-**A competitive deduction card game for 2–5 players · ~25 minutes · ages 10+**
+**A competitive deduction card game for 2–5 players · ~25 minutes · ages 8+**
 
-Every player is a field biologist hiding a secret specimen. Interrogate your rivals,
-read the pattern of their questions, and strike when you can name their creature.
-Ask too many questions and everyone learns the answer — including the rival you're
-hunting. The sharpest decision tree wins.
+Every player hides a secret specimen — one of the world's weirdest, cutest animals.
+Interrogate your rivals, read the pattern of their questions, and shout **SPOTTED!**
+when you can name their creature. Ask too many questions and everyone learns the
+answer — including the rival who's hunting *you*. The sharpest decision tree wins.
 
 > Design reference: built from the mechanism blocks of *Building Blocks of Tabletop
 > Game Design* — see `docs/specs/2026-08-10-spotted-design.md`.
@@ -26,8 +26,8 @@ hunting. The sharpest decision tree wins.
 **The trait matrix (public knowledge):** every creature has exactly one value for each
 of 5 traits:
 
-- **CLASS** — mammal · bird · reptile · insect · aquatic
-- **HABITAT** — forest · grassland · desert · water · underground
+- **CLASS** — mammal · bird · reptile · amphibian · aquatic
+- **HABITAT** — water · forest · grassland · desert · underground
 - **SIZE** — small · medium · large
 - **DIET** — herbivore · carnivore · omnivore
 - **ACTIVITY** — diurnal · nocturnal
@@ -84,7 +84,7 @@ regardless of the cards in your hand, and it does not require playing a card.**
   (Misdirect/Eavesdrop intel never counts toward `q`). Max 6, min 2.
   The rival immediately draws a new Specimen (their `q` counter resets).
   If the creature deck is empty, see **Game end**.
-- **Wrong:** you lose **2 Discovery tokens** (minimum 0), and your failed guess is
+- **Wrong:** you lose **3 Discovery tokens** (minimum 0), and your failed guess is
   **public information** — everyone now knows that creature is *not* your rival's
   Specimen.
 
@@ -121,8 +121,8 @@ One grid per rival, updated after every **public** answer:
 
 ```
 Rival: ______
-CLASS    mammal[ ] bird[ ] reptile[ ] insect[ ] aquatic[ ]
-HABITAT  forest[ ] grassland[ ] desert[ ] water[ ] underground[ ]
+CLASS    mammal[ ] bird[ ] reptile[ ] amphibian[ ] aquatic[ ]
+HABITAT  water[ ] forest[ ] grassland[ ] desert[ ] underground[ ]
 SIZE     small[ ] medium[ ] large[ ]
 DIET     herbivore[ ] carnivore[ ] omnivore[ ]
 ACTIVITY diurnal[ ] nocturnal[ ]
@@ -132,6 +132,18 @@ Notes / failed guesses: __________________________
 
 Cross out values that a public **NO** eliminates; circle confirmed **YES** values. When
 exactly one creature on the reference sheet survives, you are ready to Identify.
+
+## Variant: Kids Mode (ages 6+)
+
+Same game, simpler math — for younger players or a faster family round:
+
+- Correct Identification scores a **flat 2 tokens** (no efficiency bonus).
+- Wrong guesses are **free** — the guess still becomes public information, so
+  careless guessing still costs you the element of surprise.
+- First to **6 tokens** triggers the equal-turn finish.
+
+*(Sim-verified: with simplified scoring the deduction skill gap stays fully
+visible — good players still win decisively.)*
 
 ## Variant: Duel (2-player)
 

@@ -96,7 +96,7 @@ def run_demo(seed: int, n: int, verbose_turns: int):
                     else:
                         print(f"[round {round_no}] {line.strip().splitlines()[0]}")
                 else:
-                    line += "   →  WRONG (−2 tokens, guess becomes public info)"
+                    line += "   →  WRONG (−3 tokens, guess becomes public info)"
                     if verbose:
                         print(line)
                     else:

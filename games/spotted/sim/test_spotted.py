@@ -55,9 +55,9 @@ class TestData(unittest.TestCase):
 
 
 class TestEngine(unittest.TestCase):
-    def _game(self, n=3, seed=7):
+    def _game(self, n=3, seed=7, kids_mode=False):
         agents = [RandomAgent(i, random.Random(seed + i)) for i in range(n)]
-        return Game(n, agents, seed)
+        return Game(n, agents, seed, kids_mode=kids_mode)
 
     def test_setup(self):
         g = self._game()
@@ -91,8 +91,24 @@ class TestEngine(unittest.TestCase):
         scorer.score = 3
         wrong = next(c.cid for c in g.creatures if c.cid != target.specimen.cid)
         g._resolve(scorer, ("guess", 1, wrong))
-        self.assertEqual(scorer.score, 1)  # -2 penalty for a wrong identification
+        self.assertEqual(scorer.score, 0)  # -3 penalty for a wrong identification
         # failed guess is public info: that creature is no longer a candidate
+        cands = g.candidates(2, 1)
+        self.assertNotIn(wrong, [c.cid for c in cands])
+
+    def test_kids_mode_scoring(self):
+        g = self._game(kids_mode=True)
+        self.assertEqual(g.win_target, 6)  # shorter game for kids
+        scorer, target = g.players[0], g.players[1]
+        cid = target.specimen.cid
+        target.q = 3  # efficiency bonus must NOT apply in kids mode
+        g._resolve(scorer, ("guess", 1, cid))
+        self.assertEqual(scorer.score, 2)  # flat scoring
+        # wrong guesses are free (no penalty) but still public
+        wrong = next(c.cid for c in g.creatures
+                     if c.cid != g.players[1].specimen.cid)
+        g._resolve(scorer, ("guess", 1, wrong))
+        self.assertEqual(scorer.score, 2)
         cands = g.candidates(2, 1)
         self.assertNotIn(wrong, [c.cid for c in cands])
 

@@ -50,13 +50,16 @@ class GameResult:
 
 class Game:
     def __init__(self, n_players: int, agents, seed: int, win_target: int | None = None,
-                 compensation: list[int] | None = None, rotate_first_player: bool = True):
+                 compensation: list[int] | None = None, rotate_first_player: bool = True,
+                 kids_mode: bool = False):
         assert 2 <= n_players <= 5
         self.rng = random.Random(seed)
         self.n = n_players
         self.agents = agents
         self.rotate = rotate_first_player
-        self.win_target = win_target or (WIN_TARGET_2P if n_players == 2 else WIN_TARGET_DEFAULT)
+        self.kids_mode = kids_mode  # flat scoring, no penalty, shorter game
+        self.win_target = win_target or (6 if kids_mode else
+                                         (WIN_TARGET_2P if n_players == 2 else WIN_TARGET_DEFAULT))
         self.creatures = load_creatures()
         self.creature_deck = self.creatures[:]
         self.rng.shuffle(self.creature_deck)
@@ -177,7 +180,7 @@ class Game:
             if t.specimen.cid == cid:
                 self.guess_hits += 1
                 self.q_at_hit.append(t.q)
-                points = 2 + max(0, 4 - t.q)
+                points = 2 if self.kids_mode else 2 + max(0, 4 - t.q)
                 p.score += points
                 p.correct_ids += 1
                 self.log.append(("identified", target, t.epoch, cid, t.q))
@@ -188,7 +191,8 @@ class Game:
                 else:
                     self.depleted = True
             else:
-                p.score = max(0, p.score - 2)
+                if not self.kids_mode:
+                    p.score = max(0, p.score - 3)
                 self.log.append(("guess_fail", target, t.epoch, cid))
         elif kind == "discard":
             _, card = act

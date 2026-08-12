@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPOTTED! — Reference Card</title>
+<style>
+  :root{
+    --bg:#10262b; --gold:#c9a227; --amber:#e0a13a; --green:#3f9e63;
+    --blue:#3a7fe0; --red:#d4483b; --purple:#8a4fd4; --ink:#0b1a1e;
+    --paper:#f4efe4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#444;font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif}
+  .card{
+    width:105mm;height:148mm;            /* A6 — fits one print page */
+    background:var(--bg);color:var(--paper);
+    padding:7mm 7mm 6mm;border-radius:4mm;overflow:hidden;
+    display:flex;flex-direction:column;gap:2.2mm;
+    position:relative;
+    border:1px solid var(--gold);
+  }
+  .card::before{                          /* topographic watermark */
+    content:"";position:absolute;inset:0;opacity:.06;pointer-events:none;
+    background:repeating-radial-gradient(circle at 50% 30%,
+      transparent 0 6mm, var(--paper) 6mm 6.4mm);
+  }
+  .title{
+    text-align:center;border-bottom:2px solid var(--gold);padding-bottom:2mm;
+  }
+  .title h1{font-size:13mm;letter-spacing:1px;color:var(--gold);
+    font-weight:900;line-height:.9;text-transform:uppercase}
+  .title .sub{font-size:3mm;opacity:.85;margin-top:1mm;letter-spacing:.3px}
+  .sec h2{
+    font-size:3.4mm;color:var(--gold);text-transform:uppercase;
+    letter-spacing:.6px;margin-bottom:1mm;font-weight:800;
+  }
+  .sec{font-size:3.05mm;line-height:1.32}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+  ol,ul{padding-left:4mm}
+  li{margin:.4mm 0}
+  .pill{
+    display:inline-block;font-weight:800;padding:0 1.5mm;border-radius:2mm;
+    font-size:2.6mm;color:var(--ink);
+  }
+  .a{background:var(--amber)} .g{background:var(--green)}
+  .b{background:var(--blue)} .r{background:var(--red)} .p{background:var(--purple)}
+  .scoreline{font-size:3.1mm;line-height:1.4}
+  .scoreline b{color:var(--gold)}
+  .kids{
+    margin-top:auto;font-size:2.7mm;border-top:1px dashed var(--gold);
+    padding-top:2mm;line-height:1.3;opacity:.9;
+  }
+  .kids b{color:var(--amber)}
+  /* ---- print rules ---- */
+  @media print{
+    html,body{background:#fff}
+    @page{size:105mm 148mm;margin:0}
+    .card{border-radius:0;margin:0;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="title">
+    <h1>Spotted!</h1>
+    <div class="sub">Guess the hidden creature · 2–5 players · ages 8+</div>
+  </div>
+
+  <div class="sec grid2">
+    <div>
+      <h2>Setup</h2>
+      <ol>
+        <li>Deal <b>1 secret Specimen</b> (face-down, never reveal).</li>
+        <li>Deal <b>6 cards</b> from the 80-card deck. Hand limit <b>7</b>.</li>
+        <li>Random start player. Marker rotates left each round.</li>
+      </ol>
+    </div>
+    <div>
+      <h2>Your turn</h2>
+      <ol>
+        <li><b>Draw 1.</b></li>
+        <li>Then do <b>one</b>:</li>
+      </ol>
+      <ul style="margin-top:1mm">
+        <li><b>A.</b> Ask a question card.</li>
+        <li><b>B.</b> Play a special.</li>
+        <li><b>C.</b> Make an Identification.</li>
+        <li><b>D.</b> Discard 1.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Special cards</h2>
+    <ul style="columns:2;gap:3mm">
+      <li><span class="pill a">Double Probe</span> Ask 2 questions. Public.</li>
+      <li><span class="pill g">Misdirect</span> 1 question, answer secret to you.</li>
+      <li><span class="pill b">Eavesdrop</span> See one trait of a target.</li>
+      <li><span class="pill r">Cross-Examine</span> Same Q to 2 targets. Public.</li>
+      <li><span class="pill p">Wild Probe</span> Ask any trait. Public.</li>
+    </ul>
+  </div>
+
+  <div class="sec scoreline">
+    <h2>Scoring</h2>
+    <b>Correct ID</b> = 2 + bonus where bonus = max(0, 4 − q), and <b>q</b> = public
+    questions asked about that target. Max 6. Target then draws a new secret.<br>
+    <b>Wrong ID</b> = lose <b>3</b> tokens; the guess becomes public info.<br>
+    <b>First to 10</b> → finish the round (equal turns) → highest total wins.
+    Tiebreak: most IDs, then seat. <i>2-player duel: first to 8.</i>
+  </div>
+
+  <div class="kids">
+    <b>KIDS MODE (ages 6+):</b> correct = flat <b>+2</b>, wrong guesses are
+    <b>free</b> (but still public), first to <b>6</b>. Same fun, simpler math.
+  </div>
+
+</div>
+</body>
+</html>

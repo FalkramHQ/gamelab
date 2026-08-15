@@ -262,9 +262,12 @@ h1.logo span { color: var(--paper); }
 
 /* phones */
 @media (max-width: 760px) {
-  body { overflow: auto; }
-  html, body, #root { height: auto; min-height: 100%; }
-  .app { min-height: 100vh; }
+  /* fixed game shell: nothing page-scrolls; only the middle area scrolls,
+     so the hand + action buttons are ALWAYS visible for play */
+  html, body, #root { height: 100%; }
+  body { overflow: hidden; }
+  .app { height: 100vh; height: 100dvh; }
+  .table { min-height: 0; }
 
   .topbar { flex-wrap: wrap; gap: 8px; padding: 8px 12px; }
   h1.logo { font-size: 26px; }
@@ -274,14 +277,14 @@ h1.logo span { color: var(--paper); }
   .seats { padding: 8px 8px 2px; gap: 8px; }
   .seat { width: calc(50% - 6px); min-width: 140px; padding: 8px; }
 
-  /* stack feed above pad; the whole page scrolls on phones */
-  .midrow { flex-direction: column; padding: 6px 10px; gap: 8px; }
+  /* middle area stacks + scrolls internally between seats and hand */
+  .midrow { flex-direction: column; padding: 6px 10px; gap: 8px; overflow-y: auto; min-height: 0; }
   .feedwrap { flex: none; }
-  .feed { max-height: 26vh; }
-  .sidewrap { width: 100%; }
+  .feed { max-height: 22vh; }
+  .sidewrap { width: 100%; flex: none; }
   .youpanel .specimen { width: 52px; height: 68px; }
 
-  .bottombar { padding: 4px 10px calc(12px + env(safe-area-inset-bottom)); }
+  .bottombar { padding: 4px 10px calc(10px + env(safe-area-inset-bottom)); }
   .hint { font-size: 12.5px; padding: 0 8px; }
 
   /* hand becomes a swipeable horizontal strip, no overlap */
@@ -297,10 +300,21 @@ h1.logo span { color: var(--paper); }
   .actions { flex-wrap: wrap; }
   .actions button { flex: 1 1 auto; padding: 10px 8px; font-size: 13.5px; }
 
-  /* pad: bigger tap targets for fingers */
-  .pad .cell { min-width: 52px; padding: 6px 6px; margin: 2px 3px 2px 0; }
+  /* pad trait grid: label above, cells wrap below — never overflow or crowd */
+  .pad table, .pad tbody, .pad tr, .pad th, .pad td { display: block; width: 100%; }
+  .pad tr { margin-bottom: 6px; }
+  .pad th { padding: 2px 0; font-size: 11px; }
+  .pad td { padding: 0; }
+  .pad .cell { min-width: 0; padding: 7px 10px; margin: 2px 4px 2px 0; font-size: 12.5px; }
   .pad .rival-tabs button { padding: 7px 12px; }
   .pad .tile { width: 62px; }
+  /* trait text chips don't fit in 62px tiles — render as colored dots
+     (hover/long-press title still carries the full values) */
+  .pad .tile .ttraits { gap: 2px; }
+  .pad .tile .ttraits i {
+    width: 7px; height: 7px; padding: 0; border-radius: 50%;
+    font-size: 0; overflow: hidden;
+  }
 
   /* modals go near-fullscreen */
   .overlay { padding: 10px; align-items: flex-end; }

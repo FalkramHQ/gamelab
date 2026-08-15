@@ -172,7 +172,7 @@ export function GameScreen(props: {
           {props.cfg.kids ? "Kids Mode" : g.n === 2 ? "Duel" : "Standard"} · first to {g.winTarget}
         </span>
         <div className="spacer" />
-        <button onClick={() => setRefOpen(true)}>Reference</button>
+        <button onClick={() => setRefOpen(true)} title="Open the how-to-play reference card any time">? How to play</button>
         <button onClick={() => setPadOpen(!padOpen)}>{padOpen ? "Hide pad" : "Pad"}</button>
         <button onClick={props.onSetup}>New game</button>
       </div>

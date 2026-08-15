@@ -77,9 +77,11 @@ function parseCsv(text: string): Record<string, string>[] {
 }
 
 // Raw CSV imports keep a single source of truth with the physical game.
-import creaturesRaw from "../../../cards/creatures.csv?raw";
-import questionsRaw from "../../../cards/questions.csv?raw";
-import specialsRaw from "../../../cards/specials.csv?raw";
+// Local copies of games/spotted/cards/*.csv so Vercel (which only uploads the
+// project directory) can resolve them; keep in sync with the card CSVs.
+import creaturesRaw from "./data/creatures.csv?raw";
+import questionsRaw from "./data/questions.csv?raw";
+import specialsRaw from "./data/specials.csv?raw";
 
 export const CREATURES: Creature[] = parseCsv(creaturesRaw).map((row) => ({
   cid: row.id,

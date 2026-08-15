@@ -1,0 +1,6 @@
+id,name,copies,rule
+S01,Double Probe,3,"Ask up to 2 questions this turn (same or different targets). Answers are public."
+S02,Misdirect,4,"Ask 1 question; the target answers SECRETLY to you only (yes/no token, hidden from others)."
+S03,Eavesdrop,3,"Choose a target and one trait; the target secretly shows you their value for that trait."
+S04,Cross-Examine,3,"Ask the same question to 2 different targets. Answers are public."
+S05,Wild Probe,3,"Ask any yes/no trait question, even if you don't hold that question card. Answer is public."

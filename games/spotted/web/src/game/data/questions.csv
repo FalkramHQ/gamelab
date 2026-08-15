@@ -1,0 +1,19 @@
+id,trait,value,question,copies
+Q01,class,mammal,Is your creature a MAMMAL?,3
+Q02,class,bird,Is your creature a BIRD?,3
+Q03,class,reptile,Is your creature a REPTILE?,3
+Q04,class,amphibian,Is your creature an AMPHIBIAN?,3
+Q05,class,aquatic,Is your creature AQUATIC?,3
+Q06,habitat,water,Does your creature live in the WATER?,3
+Q07,habitat,forest,Does your creature live in the FOREST?,3
+Q08,habitat,grassland,Does your creature live in the GRASSLAND?,3
+Q09,habitat,desert,Does your creature live in the DESERT?,3
+Q10,habitat,underground,Does your creature live UNDERGROUND?,3
+Q11,size,small,Is your creature SMALL?,4
+Q12,size,medium,Is your creature MEDIUM-sized?,4
+Q13,size,large,Is your creature LARGE?,4
+Q14,diet,herbivore,Is your creature a HERBIVORE?,4
+Q15,diet,carnivore,Is your creature a CARNIVORE?,4
+Q16,diet,omnivore,Is your creature an OMNIVORE?,4
+Q17,activity,diurnal,Is your creature DIURNAL (active by day)?,5
+Q18,activity,nocturnal,Is your creature NOCTURNAL (active by night)?,5

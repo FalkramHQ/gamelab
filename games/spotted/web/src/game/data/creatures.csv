@@ -1,0 +1,26 @@
+id,name,nickname,class,habitat,size,diet,activity
+C01,Axolotl,Lottie,amphibian,water,small,carnivore,nocturnal
+C02,Capybara,Capy,mammal,grassland,large,herbivore,diurnal
+C03,Red Panda,Rusty,mammal,forest,medium,herbivore,diurnal
+C04,Fennec Fox,Sandy,mammal,desert,small,omnivore,nocturnal
+C05,Pangolin,Roller,mammal,underground,medium,carnivore,nocturnal
+C06,Leafy Seadragon,Leafy,aquatic,water,small,carnivore,diurnal
+C07,Slow Loris,Snooze,mammal,forest,small,omnivore,nocturnal
+C08,Quokka,Smiley,mammal,grassland,small,herbivore,diurnal
+C09,Serval,Spring,mammal,grassland,large,carnivore,nocturnal
+C10,Panther Chameleon,Neon,reptile,forest,small,carnivore,diurnal
+C11,Blue-footed Booby,Stomp,bird,grassland,medium,carnivore,diurnal
+C12,Sugar Glider,Zippy,mammal,forest,small,omnivore,nocturnal
+C13,Kakapo,Moss,bird,forest,medium,herbivore,nocturnal
+C14,Narwhal,Spike,aquatic,water,large,carnivore,diurnal
+C15,Dumbo Octopus,Dumbo,aquatic,water,small,carnivore,nocturnal
+C16,Kiwi,Fuzzy,bird,grassland,medium,carnivore,nocturnal
+C17,Flamingo,Pinky,bird,grassland,large,omnivore,diurnal
+C18,Marine Iguana,Iggy,reptile,grassland,large,herbivore,diurnal
+C19,Thorny Devil,Prickle,reptile,desert,small,carnivore,diurnal
+C20,Glass Frog,Crystal,amphibian,water,small,carnivore,nocturnal
+C21,Poison Dart Frog,Zing,amphibian,forest,small,carnivore,diurnal
+C22,Leaf-tailed Gecko,Mimic,reptile,forest,small,carnivore,nocturnal
+C23,Blobfish,Bloop,aquatic,water,medium,omnivore,diurnal
+C24,Meerkat,Sentry,mammal,desert,medium,omnivore,diurnal
+C25,Naked Mole Rat,Nugget,mammal,underground,small,omnivore,nocturnal

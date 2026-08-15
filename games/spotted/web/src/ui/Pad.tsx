@@ -16,7 +16,10 @@ export function Pad(props: {
   const { game, marks, setMarks } = props;
   const rivals = game.players.filter((p) => p.seat !== 0).map((p) => p.seat);
   const [rival, setRival] = useRival(rivals);
+  const [tapMode, setTapMode] = useState<"scratch" | "inspect">("scratch");
+  const [inspectCid, setInspectCid] = useState<string | null>(null);
   const m = marks[rival] ?? {};
+  const inspected = inspectCid ? CREATURES.find((c) => c.cid === inspectCid) : undefined;
 
   const cycle = (trait: Trait, value: string) => {
     const key = `${trait}:${value}`;
@@ -75,7 +78,33 @@ export function Pad(props: {
           ))}
         </tbody>
       </table>
-      <h3 style={{ marginTop: 10 }}>Creatures — tap to scratch out</h3>
+      <div className="checklist-head">
+        <h3>Creatures</h3>
+        <div className="modebtns" title="What tapping a creature tile does">
+          <button className={tapMode === "scratch" ? "on" : ""} onClick={() => setTapMode("scratch")}>tap = scratch</button>
+          <button className={tapMode === "inspect" ? "on" : ""} onClick={() => setTapMode("inspect")}>tap = inspect</button>
+        </div>
+      </div>
+      {inspected && (
+        <div className="inspect">
+          <img src={`/creatures/${inspected.cid}.jpg`} alt={inspected.name} />
+          <div className="imeta">
+            <b>{inspected.name}</b> <span>“{inspected.nickname}”</span>
+            <div className="ipills">
+              {TRAITS.map((t) => (
+                <span key={t} className={`pill trait-${t}`}>
+                  <i>{t}</i>{inspected.traits[t]}
+                </span>
+              ))}
+            </div>
+          </div>
+          {!failedCids.has(inspected.cid) && (
+            <button onClick={() => toggleCreature(inspected.cid)}>
+              {m[`creature:${inspected.cid}`] ? "Restore" : "Scratch out"}
+            </button>
+          )}
+        </div>
+      )}
       <div className="checklist">
         {CREATURES.map((c) => {
           const crossed = !!m[`creature:${c.cid}`] || failedCids.has(c.cid);
@@ -83,8 +112,11 @@ export function Pad(props: {
           const locked = failedCids.has(c.cid); // public failed guess: everyone knows
           return (
             <div key={c.cid}
-                 className={`tile${crossed ? " crossed" : ""}${contradicts && !crossed ? " dim" : ""}`}
-                 onClick={locked ? undefined : () => toggleCreature(c.cid)}
+                 className={`tile${crossed ? " crossed" : ""}${contradicts && !crossed ? " dim" : ""}${inspectCid === c.cid ? " sel" : ""}`}
+                 onClick={() => {
+                   setInspectCid(c.cid);
+                   if (tapMode === "scratch" && !locked) toggleCreature(c.cid);
+                 }}
                  title={locked ? "Failed guess heard at the table — cannot be this"
                    : `${c.name} — ${TRAITS.map((t) => c.traits[t]).join(" · ")}`}>
               <img src={`/creatures/${c.cid}.jpg`} alt={c.name} loading="lazy" />

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { CREATURES, QuestionCard, Trait, questionText } from "../game/data";
+import { CREATURES, QuestionCard, TRAITS, Trait, questionText } from "../game/data";
 import { Action, Game } from "../game/engine";
 import { seatName, TRAIT_VALUES_UI } from "./bits";
 
@@ -74,7 +74,7 @@ export function IdentifyModal(props: {
   }, [props.game]);
 
   return (
-    <Overlay onClose={props.onClose}>
+    <Overlay>
       <button className="close-x" onClick={props.onClose}>✕</button>
       <h2>SPOTTED! — Make an Identification</h2>
       <div className="row">
@@ -90,15 +90,22 @@ export function IdentifyModal(props: {
         {CREATURES.map((c) => (
           <div key={c.cid}
                className={`creature-tile${cid === c.cid ? " sel" : ""}${dead.has(c.cid) ? " dead" : ""}`}
-               onClick={() => setCid(c.cid)}>
+               onClick={dead.has(c.cid) ? undefined : () => setCid(c.cid)}
+               title={dead.has(c.cid) ? "Already spotted — it can't be this"
+                 : `${c.name} — ${TRAITS.map((t) => c.traits[t]).join(" · ")}`}>
             <img src={`/creatures/${c.cid}.jpg`} alt={c.name} />
             <div className="cname">{c.name}</div>
+            <span className="idots">
+              {TRAITS.map((t) => <i key={t} className={`trait-${t}`} />)}
+            </span>
           </div>
         ))}
       </div>
       <div className="row" style={{ justifyContent: "flex-end" }}>
         <span style={{ color: "var(--muted)", fontSize: 13 }}>
-          Correct: 2 + efficiency bonus · Wrong: −3 & public
+          {props.game.kidsMode
+            ? "Correct: +2 · Wrong: free, but the guess is public"
+            : "Correct: 2 + efficiency bonus · Wrong: −3 & public"}
         </span>
         <button className="gold" disabled={target === null || !cid}
                 onClick={() => props.onCommit([{ kind: "guess", target: target!, cid: cid! }])}>
@@ -186,8 +193,10 @@ export function SpecialDialog(props: {
     return acts;
   };
 
+  const acts = build(); // null until all required targets/questions are chosen
+
   return (
-    <Overlay onClose={props.onClose}>
+    <Overlay>
       <button className="close-x" onClick={props.onClose}>✕</button>
       <h2>{props.card.name}</h2>
       <p style={{ color: "var(--muted)", fontSize: 14 }}>{props.card.rule}</p>
@@ -240,10 +249,9 @@ export function SpecialDialog(props: {
 
       <div className="row" style={{ justifyContent: "flex-end" }}>
         <button onClick={props.onClose}>Cancel</button>
-        <button className="gold" onClick={() => {
-          const acts = build();
-          if (acts) props.onCommit(acts);
-        }}>
+        <button className="gold" disabled={!acts}
+                title={acts ? undefined : "Pick a target first"}
+                onClick={() => { if (acts) props.onCommit(acts); }}>
           Play {props.card.name}
         </button>
       </div>

@@ -219,7 +219,12 @@ export function GameScreen(props: {
         </div>
 
         <div className="bottombar">
-          <div className="hint">{hint}</div>
+          <div className="hint">
+            {hint}
+            {phase === "human" && lastDrawn && (
+              <span className="drawn"> · you drew: <b>{lastDrawn.special ? lastDrawn.name : lastDrawn.question}</b></span>
+            )}
+          </div>
           <div className="hand">
             {me.hand.map((c) => (
               <CardView key={c.cardId} card={c}

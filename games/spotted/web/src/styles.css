@@ -39,6 +39,8 @@ button {
   border-radius: 8px;
   padding: 8px 14px;
   transition: transform .08s, box-shadow .08s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 14px #0008; }
 button:disabled { opacity: .45; cursor: default; }
@@ -250,3 +252,70 @@ h1.logo span { color: var(--paper); }
 .trait-size { background: var(--trait-size); }
 .trait-diet { background: var(--trait-diet); }
 .trait-activity { background: var(--trait-activity); }
+
+/* ------------------------------------------------------- responsive */
+/* tablets & narrow laptops */
+@media (max-width: 1000px) {
+  .sidewrap { width: 260px; }
+  .seat { width: 150px; }
+}
+
+/* phones */
+@media (max-width: 760px) {
+  body { overflow: auto; }
+  html, body, #root { height: auto; min-height: 100%; }
+  .app { min-height: 100vh; }
+
+  .topbar { flex-wrap: wrap; gap: 8px; padding: 8px 12px; }
+  h1.logo { font-size: 26px; }
+  .topbar .spacer { display: none; }
+  .topbar button { padding: 8px 10px; font-size: 12.5px; }
+
+  .seats { padding: 8px 8px 2px; gap: 8px; }
+  .seat { width: calc(50% - 6px); min-width: 140px; padding: 8px; }
+
+  /* stack feed above pad; the whole page scrolls on phones */
+  .midrow { flex-direction: column; padding: 6px 10px; gap: 8px; }
+  .feedwrap { flex: none; }
+  .feed { max-height: 26vh; }
+  .sidewrap { width: 100%; }
+  .youpanel .specimen { width: 52px; height: 68px; }
+
+  .bottombar { padding: 4px 10px calc(12px + env(safe-area-inset-bottom)); }
+  .hint { font-size: 12.5px; padding: 0 8px; }
+
+  /* hand becomes a swipeable horizontal strip, no overlap */
+  .hand {
+    justify-content: flex-start; overflow-x: auto; min-height: 136px;
+    padding: 12px 10px 8px; -webkit-overflow-scrolling: touch;
+  }
+  .hand .card + .card { margin-left: 6px; }
+  .card { width: 88px; height: 126px; flex: 0 0 auto; }
+  .card .qtext { font-size: 10.5px; }
+  .card.special .sname { font-size: 12px; }
+
+  .actions { flex-wrap: wrap; }
+  .actions button { flex: 1 1 auto; padding: 10px 8px; font-size: 13.5px; }
+
+  /* pad: bigger tap targets for fingers */
+  .pad .cell { min-width: 52px; padding: 6px 6px; margin: 2px 3px 2px 0; }
+  .pad .rival-tabs button { padding: 7px 12px; }
+  .pad .tile { width: 62px; }
+
+  /* modals go near-fullscreen */
+  .overlay { padding: 10px; align-items: flex-end; }
+  .modal {
+    max-height: 92vh; max-width: 100%; border-radius: 14px 14px 0 0;
+    padding: 14px;
+  }
+  .creature-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* touch devices: hover states don't exist, taps need active feedback */
+@media (hover: none) {
+  button:hover:not(:disabled) { transform: none; box-shadow: none; }
+  .hand .card:hover { transform: none; }
+  .hand .card.selected { transform: translateY(-8px); }
+  button:active:not(:disabled) { transform: scale(.97); }
+  .hand .card:active { transform: translateY(-6px); }
+}
